@@ -7,7 +7,7 @@ import (
 	"log"
 	"time"
 
-	// 关键修改：引用你自己的包名
+
 	lcache "github.com/FIzore/PolarisCache"
 )
 
@@ -23,7 +23,6 @@ func main() {
 	log.Printf("[节点 %s] 启动, 地址: %s", nodeID, addr)
 
 	// 2. 创建节点 (Server) - 用于被别人访问
-	// 对应截图 line 23
 	node, err := lcache.NewServer(addr, "polaris-cache",
 		lcache.WithEtcdEndpoints([]string{"localhost:2379"}),
 		lcache.WithDialTimeout(5*time.Second),
@@ -68,7 +67,7 @@ func main() {
 
 	// 7. 设置本节点的特定键值对 (测试 Set)
 	localKey := fmt.Sprintf("key_%s", nodeID)
-	// 修正：截图里的 fmt.Sprintf 格式字符串修正
+	// 修正：fmt.Sprintf 格式字符串修正
 	localValue := []byte(fmt.Sprintf("这是节点%s的数据", nodeID))
 
 	fmt.Printf("\n=== 节点%s: 设置本地数据 ===\n", nodeID)
@@ -84,7 +83,6 @@ func main() {
 	time.Sleep(10 * time.Second)
 
 	// 8. 打印当前已发现的节点 (验证 Etcd 是否工作)
-	// 对应截图 line 78
 	picker.PrintPeers()
 
 	// 9. 测试获取本地数据
@@ -102,7 +100,6 @@ func main() {
 	}
 
 	// 10. 测试获取其他节点的数据 (验证分布式能力)
-	// 对应截图 line 95
 	otherKeys := []string{"key_A", "key_B", "key_C"}
 	for _, key := range otherKeys {
 		if key == localKey {
@@ -121,3 +118,4 @@ func main() {
 	// 保持程序运行
 	select {}
 }
+
