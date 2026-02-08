@@ -1,4 +1,4 @@
-# 🚀 LCache (PolarisCache)
+# 🚀 PolarisCache
 
 ![Go Version](https://img.shields.io/badge/go-1.21%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
